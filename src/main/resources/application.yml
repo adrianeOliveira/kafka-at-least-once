@@ -1,1 +1,11 @@
+spring:
+  kafka:
+    client-id: at-least-once-app
+
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: at-least-once-group
+
+    producer:
+      bootstrap-servers: localhost:9092
 
