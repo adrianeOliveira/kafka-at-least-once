@@ -16,7 +16,11 @@ public class Producer {
 
     public void send(String message){
         log.info("Message sent={}", message);
-        kafkaTemplate.send("at.least.once.topic", message);
+        kafkaTemplate.send("at.least.once.topic", message)
+            .addCallback(
+            result -> log.info("partition={}, offset={}", result.getRecordMetadata().partition(), result.getRecordMetadata().offset()),
+            ex -> log.error("Unable to send message=[{}] due to : {}", message, ex.getMessage())
+        );
     }
 
 }
