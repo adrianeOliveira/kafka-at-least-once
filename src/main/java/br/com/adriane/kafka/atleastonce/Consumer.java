@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Consumer {
 
-    @KafkaListener(topics = "at.most.once.topic")
+    @KafkaListener(topics = "at.least.once.topic")
     public void listen(String message) throws InterruptedException {
         log.info("Message received={}",message);
     }
