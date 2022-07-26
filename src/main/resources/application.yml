@@ -5,6 +5,12 @@ spring:
     consumer:
       bootstrap-servers: localhost:9092
       group-id: at-least-once-group
+      enable:
+        auto:
+          commit: false
+      auto-offset-reset: latest
+    listener:
+      ack-mode: manual
 
     producer:
       bootstrap-servers: localhost:9092
